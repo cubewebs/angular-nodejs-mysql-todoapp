@@ -1,0 +1,51 @@
+<div class="reg-wrapper">
+  <p-card
+    header="Login"
+    subheader="Please fill in all fields and click send"
+    [style]="{ width: '60rem' }"
+  >
+    <ng-template pTemplate="header">
+      <img alt="Card" src="../../../assets/img/login.jpg" />
+    </ng-template>
+    {{ loginForm.value | json }}
+    {{ loginForm.valid | json }}
+    <hr />
+    <form [formGroup]="loginForm">
+      <div class="field">
+        <label for="user-label">User Name</label>
+        <input
+          id="user-label"
+          type="text"
+          formControlName="user"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+      <div class="field">
+        <label for="password-label">Password</label>
+        <input
+          id="password-label"
+          type="password"
+          formControlName="password"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+    </form>
+    <ng-template pTemplate="footer">
+      <p-button
+        type="button"
+        (click)="onClear()"
+        label="Clear"
+        icon="pi pi-times"
+        styleClass="p-button-secondary"
+      ></p-button>
+      <p-button
+        type="button"
+        label="Login"
+        icon="pi pi-check"
+        (click)="onSubmit()"
+        [disabled]="!loginForm.valid"
+        [style]="{ 'margin-left': '.5em' }"
+      ></p-button>
+    </ng-template>
+  </p-card>
+</div>

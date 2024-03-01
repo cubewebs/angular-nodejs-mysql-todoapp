@@ -1,0 +1,62 @@
+<div class="reg-wrapper">
+  <p-card
+    header="Registration Form"
+    subheader="Please fill in all fields and click send"
+    [style]="{ width: '60rem' }"
+  >
+    <ng-template pTemplate="header">
+      <img alt="Card" src="../../../assets/img/register.webp" />
+    </ng-template>
+    <form formGroup="registerForm" (submit)="onSubmit()">
+      <div class="field">
+        <label for="user-label">User Name</label>
+        <input
+          id="user-label"
+          type="text"
+          formControlName="user"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+      <div class="field">
+        <label for="email-label">Email</label>
+        <input
+          id="email-label"
+          type="email"
+          formControlName="email"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+      <div class="field">
+        <label for="password-label">Password</label>
+        <input
+          id="password-label"
+          type="password"
+          formControlName="password"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+      <div class="field">
+        <label for="confirm-password-label">Confirm Password</label>
+        <input
+          id="confirm-password-label"
+          type="password"
+          formControlName="confirmPassword"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+      </div>
+    </form>
+    <ng-template pTemplate="footer">
+      <p-button
+        label="Cancel"
+        icon="pi pi-times"
+        styleClass="p-button-secondary"
+      ></p-button>
+      <p-button
+        type="submit"
+        label="Save"
+        icon="pi pi-check"
+        [style]="{ 'margin-left': '.5em' }"
+      ></p-button>
+    </ng-template>
+  </p-card>
+</div>

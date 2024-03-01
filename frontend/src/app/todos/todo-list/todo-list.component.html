@@ -1,0 +1,65 @@
+<p-confirmPopup></p-confirmPopup>
+<p-toast position="top-center"></p-toast>
+<h1 class="flex justify-content-center">TODO LIST</h1>
+<div class="grid">
+  <div class="col">
+    <div class="text-center p-3 border-round-sm"></div>
+  </div>
+  <div class="col-8">
+    @if(loading) {
+    <progressbar />
+    } @else {
+    <div class="text-center p-3 border-round-sm">
+      <p-table
+        [value]="todos"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="15"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        dataKey="id"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>created on</th>
+            <th>Todo date</th>
+            <th>Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-todo let-i="rowIndex">
+          <tr
+            (dblclick)="onDone(todo)"
+            [class.strikethrough]="todo.done == true"
+          >
+            <td>{{ todo.id }}</td>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.description }}</td>
+            <td>{{ todo.created_on | date : "dd-MMM-yyyy hh:mm a" }}</td>
+            <td>{{ todo.todo_date | date : "dd-MMM-yyyy hh:mm a" }}</td>
+            <td>
+              <p-button
+                icon="pi pi-pencil"
+                [rounded]="true"
+                routerLink="edit/{{ todo.id }}"
+                [disabled]="todo.done"
+              ></p-button
+              >&nbsp;
+              <p-button
+                (onClick)="deleteTodo(todo.id, $event)"
+                icon="pi pi-trash"
+                [rounded]="true"
+              ></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    }
+  </div>
+  <div class="col">
+    <div class="text-center p-3 border-round-sm"></div>
+  </div>
+</div>

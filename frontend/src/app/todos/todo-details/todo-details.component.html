@@ -1,0 +1,93 @@
+<p-toast></p-toast>
+<h1 class="flex justify-content-center">{{ operation }} Todo</h1>
+@if (loading) {
+<progressbar></progressbar>
+} @else {
+<div class="grid">
+  <div class="col">
+    <div class="text-center p-3"></div>
+  </div>
+  <div class="col-8">
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <div
+        class="text-center p-8 font-bold"
+        style="border: 1px solid #eee; border-radius: 6px"
+      >
+        <div class="card p-fluid flex flex-wrap gap-3 my-6">
+          <div class="flex-auto">
+            <span class="font-bold block mb-2">Title</span>
+            <input type="text" pInputText formControlName="title" />
+          </div>
+        </div>
+
+        <div class="card p-fluid flex flex-wrap gap-3 mb-6">
+          <div class="flex-auto">
+            <span class="font-bold block mb-2">Description</span>
+            <textarea
+              type="textarea"
+              pInputTextarea
+              formControlName="description"
+              rows="5"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="card p-fluid flex flex-wrap gap-3">
+          <div class="flex-auto">
+            <label for="createdOn-label" class="font-bold block mb-2">
+              Created On
+            </label>
+            <p-calendar
+              formControlName="createdOn"
+              [showIcon]="true"
+              inputId="createdOn-label"
+            ></p-calendar>
+          </div>
+
+          <div class="flex-auto">
+            <label for="todoDate-label" class="font-bold block mb-2">
+              Todo Date
+            </label>
+            <p-calendar
+              formControlName="todoDate"
+              [showIcon]="true"
+              inputId="todoDate-label"
+            ></p-calendar>
+          </div>
+
+          <div class="flex-auto">
+            <label for="doneDate-label" class="font-bold block mb-2">
+              Done Date
+            </label>
+            <p-calendar
+              formControlName="doneDate"
+              [showIcon]="true"
+              inputId="doneDate-label"
+            ></p-calendar>
+          </div>
+        </div>
+        <div class="submit-btn flex justify-content-between mt-6">
+          <p-button
+            type="button"
+            label="Back"
+            routerLink="/"
+            icon="pi pi-arrow-left"
+            severity="secondary"
+            iconPos="left"
+          ></p-button>
+          <p-button
+            type="submit"
+            label="Submit"
+            icon="pi pi-send"
+            iconPos="right"
+          ></p-button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col">
+    <div class="text-center p-3"></div>
+  </div>
+</div>
+
+}
